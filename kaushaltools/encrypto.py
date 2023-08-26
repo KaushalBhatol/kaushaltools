@@ -24,7 +24,7 @@ class Encrypto:
     def _encrypt_text(self, text, key):
         cipher_suite = Fernet(key)
         encrypted_text = cipher_suite.encrypt(text.encode())
-        return encrypted_text
+        return encrypted_text.decode()
     
     def _decrypt_text(self, encrypted_text, key):
         cipher_suite = Fernet(key)
@@ -32,7 +32,7 @@ class Encrypto:
         return decrypted_text
     
     def generate_key(self):
-        return Fernet.generate_key()
+        return Fernet.generate_key().decode()
 
     def test(self):
         while True:
@@ -78,9 +78,8 @@ class Encrypto:
             if get_choice() == 2: 
                 break
 
-
-
-                
-
 # Create a module-level instance of Encrypto
 encrypto = Encrypto()
+
+if __name__ == "__main__":
+    encrypto.test()
