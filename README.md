@@ -22,9 +22,9 @@ pip install kaushaltools
 
 Name                                        | Module
 --------------------------------------------|---------
-Time-Based One-Time Password (totp)         | [totp](https://github.com/KaushalBhatol/kaushaltools/documents/totp.md)
-Managing QR code                            | [qrmanager](https://github.com/KaushalBhatol/kaushaltools/documents/qrmanager.md)
-Encrypting and decrypting text or dict      | [encrypto](https://github.com/KaushalBhatol/kaushaltools/documents/encrypto.md)
+Time-Based One-Time Password (totp)         | [totp](https://github.com/KaushalBhatol/kaushaltools/blob/main/documents/totp.md)
+Managing QR code                            | [qrmanager](https://github.com/KaushalBhatol/kaushaltools/blob/main/documents/qrmanager.md)
+Encrypting and decrypting text or dict      | [encrypto](https://github.com/KaushalBhatol/kaushaltools/blob/main/documents/encrypto.md)
 
 ## Recent Patches
 
