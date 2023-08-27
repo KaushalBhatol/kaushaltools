@@ -1,5 +1,5 @@
 import qrcode
-import cv2
+import cv2  # opencv-python
 
 class qrmanager:
     """
