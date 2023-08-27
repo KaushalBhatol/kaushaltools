@@ -7,11 +7,11 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.1'
-DESCRIPTION = 'Making Simplear to use tools with easy commands'
+VERSION = '0.0.2'
+DESCRIPTION = 'Making Simple to use tools with easy commands'
 LONG_DESCRIPTION = 'A package thet allow to simpley use of different tools'
 KEYWORDS = ['python', 'tools', 'qrcode', 'encryption', 'data encrypt', 'show qr code']
-REQUIRED_PACKAGES = ['qrcode', 'opencv-python', 'cryptography']
+REQUIRED_PACKAGES = ['qrcode', 'opencv-python', 'cryptography', 'json', 'pyotp']
 
 
 # Setting up

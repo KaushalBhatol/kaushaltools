@@ -1,9 +1,30 @@
 import json
 from cryptography.fernet import Fernet
-import time
 
 class Encrypto:
+    """
+    A class for encrypting and decrypting data using Fernet encryption.
+
+    Methods:
+        encrypt(data, key): Encrypts the provided data using the given key.
+        decrypt(encrypted_text, key): Decrypts the encrypted text using the given key.
+        generate_key(): Generates a new encryption key.
+    """
+    
     def encrypt(self, data, key):
+        """
+        Encrypts the provided data using the given key.
+
+        Args:
+            data (dict or str): The data to be encrypted. If dict, it will be JSON-encoded before encryption.
+            key (str): The encryption key.
+
+        Returns:
+            str: The encrypted text.
+        
+        Raises:
+            ValueError: If an unsupported data type is provided for encryption.
+        """
         if isinstance(data, dict):
             json_data = json.dumps(data)
             encrypted_text = self._encrypt_text(json_data, key)
@@ -14,6 +35,20 @@ class Encrypto:
         return encrypted_text
     
     def decrypt(self, encrypted_text, key):
+        """
+        Decrypts the encrypted text using the given key.
+
+        Args:
+            encrypted_text (str): The encrypted text to be decrypted.
+            key (str): The encryption key.
+
+        Returns:
+            dict or str: The decrypted data. If decryption fails, returns the decrypted text.
+
+        Note:
+            If the decrypted text is a valid JSON format, it will be parsed and returned as a dict.
+            Otherwise, the decrypted text itself will be returned.
+        """
         decrypted_json = self._decrypt_text(encrypted_text, key)
         try:
             decrypted_data = json.loads(decrypted_json)
@@ -21,6 +56,7 @@ class Encrypto:
         except json.JSONDecodeError:
             return decrypted_json
     
+    # Rest of the class methods...
     def _encrypt_text(self, text, key):
         cipher_suite = Fernet(key)
         encrypted_text = cipher_suite.encrypt(text.encode())
@@ -34,52 +70,13 @@ class Encrypto:
     def generate_key(self):
         return Fernet.generate_key().decode()
 
-    def test(self):
-        while True:
-            # genrating key
-            print("\n\n Encrypto By Kaushal Chaudhary \n")
-
-            def get_choice():
-                while True:
-                    choice = input("Enter your choice: ")
-                    try:
-                        choice = int(choice)
-                        return choice
-                    except:
-                        print("Please Enter Numbers Only!!")
-            
-            def ch_1():
-                print("Genrating Key...")
-                print(f"Genrated Key is : {encrypto.generate_key()}\n")
-                time.sleep(2)
-
-            def ch_2():
-                print("Text Encryption")
-                print(f"Encrypted Text is: {encrypto.encrypt(input('Enter text to encrypt: '), input('Enter Key: '))}\n")
-                time.sleep(2)
-
-            def ch_3():
-                print("Text Decryption")
-                print(f"Decrypted Text is: {encrypto.decrypt(input('Enter text to Decrypt: '), input('Enter Key: '))}\n")
-                time.sleep(2)
-
-            print("Select options:\n [1] Genrate Key \n [2] Encrypt Text\n [3] Decrypt Text\n [4] Exit")
-            choice = get_choice()
-            if choice == 1 :
-                ch_1()
-            elif choice == 2:
-                ch_2()
-            elif choice == 3:
-                ch_3()
-            else:
-                break
-
-            print("[1] Back to Menu, [2] Exit Program")
-            if get_choice() == 2: 
-                break
-
-# Create a module-level instance of Encrypto
+# Module-level instance of Encrypto
 encrypto = Encrypto()
 
-if __name__ == "__main__":
-    encrypto.test()
+"""
+An instance of the `Encrypto` class created at the module level for convenience.
+You can use this instance to access the class methods without instantiating the class explicitly.
+"""
+
+    
+
